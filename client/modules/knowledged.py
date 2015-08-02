@@ -7,7 +7,7 @@ import sys
 from sys import maxint
 
 from client import jasperpath
-WORDS = ["WHO", "WHAT", "HOW MUCH", "HOW MANY", "HOW OLD"]
+WORDS = ["WHO", "WHAT", "HOW MUCH", "HOW MANY", "HOW OLD", "WHERE"]
 
 
 def handle(text, mic, profile):
