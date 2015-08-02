@@ -7,8 +7,8 @@ import sys
 from sys import maxint
 
 from client import jasperpath
-WORDS = ["WHO", "WHAT", "HOW MUCH", "HOW MANY", "HOW OLD"]
-
+### WORDS = ["WHO", "WHAT", "HOW MUCH", "HOW MANY", "HOW OLD"]
+WORDS = ["QUEM", "O QUE", "QUANTO", "QUANTOS", "IDADE"]
 
 def handle(text, mic, profile):
     app_id = profile['keys']['WOLFRAMALPHA']
@@ -21,11 +21,11 @@ def handle(text, mic, profile):
         if pod.text:
             texts = pod.text
         else:
-            texts = "I can not find anything"
-
+###            texts = "I can not find anything"
+            texts = "Não consigo encontrar nada."
         mic.say(texts.replace("|",""))
     else:
-        mic.say("Sorry, Could you be more specific?.")
+        mic.say("Desculpe, pode refrasear a pergunta?")
 
 
 
