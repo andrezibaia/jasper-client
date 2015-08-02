@@ -4,7 +4,7 @@ from client import app_utils
 import re
 from semantic.numbers import NumberService
 
-WORDS = ["NEWS", "YES", "NO", "FIRST", "SECOND", "THIRD"]
+WORDS = ["NOTÍCIAS", "SIM", "NÃO", "PRIMEIRO", "SEGUNDO", "TERCEIRO"]
 
 PRIORITY = 3
 
@@ -64,7 +64,7 @@ def handle(text, mic, profile):
         send_all = not chosen_articles and app_utils.isPositive(text)
 
         if send_all or chosen_articles:
-            mic.say("Sure, just give me a moment")
+            mic.say("Claro. Um momento, por favor.")
 
             if profile['prefers_email']:
                 body = "<ul>"
@@ -111,14 +111,14 @@ def handle(text, mic, profile):
             mic.say("OK I will not send any articles")
 
     if 'phone_number' in profile:
-        mic.say("Here are the current top headlines. " + all_titles +
-                ". Would you like me to send you these articles? " +
-                "If so, which?")
+        mic.say("Cá vão as notícias principais " + all_titles +
+                ". Deseja que eu envie algum destes artigos? " +
+                "Se sim, qual?")
         handleResponse(mic.activeListen())
 
     else:
         mic.say(
-            "Here are the current top headlines. " + all_titles)
+            "Cá vão as notícias principais. " + all_titles)
 
 
 def isValid(text):

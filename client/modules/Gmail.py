@@ -4,7 +4,7 @@ import email
 import re
 from dateutil import parser
 
-WORDS = ["EMAIL", "INBOX"]
+WORDS = ["EMAIL", "EMAILS", "MAILS"]
 
 
 def getSender(email):
@@ -100,30 +100,30 @@ def handle(text, mic, profile):
         msgs = fetchUnreadEmails(profile, limit=5)
 
         if isinstance(msgs, int):
-            response = "You have %d unread emails." % msgs
+            response = "Tem %d emails não lidos." % msgs
             mic.say(response)
             return
 
         senders = [getSender(e) for e in msgs]
     except imaplib.IMAP4.error:
         mic.say(
-            "I'm sorry. I'm not authenticated to work with your Gmail.")
+            "Lamento, mas não estou autenticado para verificar o seu gmail")
         return
 
     if not senders:
-        mic.say("You have no unread emails.")
+        mic.say("Não tem emails por ler.")
     elif len(senders) == 1:
-        mic.say("You have one unread email from " + senders[0] + ".")
+        mic.say("Tem um email não lido de" + senders[0] + ".")
     else:
-        response = "You have %d unread emails" % len(
+        response = "Tem %d emails não lidos" % len(
             senders)
         unique_senders = list(set(senders))
         if len(unique_senders) > 1:
-            unique_senders[-1] = 'and ' + unique_senders[-1]
-            response += ". Senders include: "
+            unique_senders[-1] = 'e ' + unique_senders[-1]
+            response += ". Os emails são de: "
             response += '...'.join(senders)
         else:
-            response += " from " + unique_senders[0]
+            response += " de " + unique_senders[0]
 
         mic.say(response)
 

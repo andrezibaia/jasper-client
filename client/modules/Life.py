@@ -2,7 +2,7 @@
 import random
 import re
 
-WORDS = ["MEANING", "OF", "LIFE"]
+WORDS = ["SENTIDO", "DA", "VIDA"]
 
 
 def handle(text, mic, profile):
@@ -16,8 +16,8 @@ def handle(text, mic, profile):
         profile -- contains information related to the user (e.g., phone
                    number)
     """
-    messages = ["It's 42, you idiot.",
-                "It's 42. How many times do I have to tell you?"]
+    messages = ["É 42, estúpido.",
+                "É 42! Quantas vezes tenho que repetir?"]
 
     message = random.choice(messages)
 
